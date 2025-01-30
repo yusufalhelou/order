@@ -5,16 +5,13 @@ import { BrowserRouter, Routes, Route, useNavigate } from "https://esm.sh/v135/r
 /* Global Variables */
 const sizeOptions = {
     small: {
-        basePrice: 800,
-        inches: 9.5
+        basePrice: 800
     },
     medium: {
-        basePrice: 1000,
-        inches: 11.5
+        basePrice: 1000
     },
     large: {
-        basePrice: 1200,
-        inches: 13.5
+        basePrice: 1200
     }
 };
 
@@ -107,7 +104,7 @@ const Header = () => {
         React.createElement("header", null,
             React.createElement("h1", null,
                 React.createElement("span", { "aria-hidden": true }, "\uD83C\uDF55"),
-                "بناء البيتزا",
+                "بيتزا 51",
                 React.createElement("span", { "aria-hidden": true }, "\uD83C\uDF55")
             )
         )
@@ -151,7 +148,7 @@ const ToppingOption = ({ topping, toppingIcons }) => {
     const toppingLabels = {
         pepperoni: "بيبروني",
         sausage: "سجق",
-        chicken: "دجاج",
+        chicken: "فراخ",
         onions: "بصل",
         peppers: "فلفل",
         mushrooms: "مشروم",
@@ -198,17 +195,17 @@ const PizzaOptions = () => {
             React.createElement("h3", null, "الحجم"),
             React.createElement("div", { className: "pizza-options__size" },
                 React.createElement("select", {
-                    className: "pizza-options__size-input",
-                    "aria-label": "حجم البيتزا",
-                    value: selectedSize,
-                    onChange: (e) => setSelectedSize(e.target.value)
-                }, Object.keys(sizeOptions).map((size) => {
-                    let sizeLabel = size;
-                    if (size === "small") sizeLabel = "صغير";
-                    if (size === "medium") sizeLabel = "متوسط";
-                    if (size === "large") sizeLabel = "كبير";
-                    return React.createElement("option", { key: size, value: size }, `${sizeLabel} (${sizeOptions[size].inches} بوصة)`);
-                })),
+    className: "pizza-options__size-input",
+    "aria-label": "حجم البيتزا",
+    value: selectedSize,
+    onChange: (e) => setSelectedSize(e.target.value)
+}, Object.keys(sizeOptions).map((size) => {
+    let sizeLabel = size;
+    if (size === "small") sizeLabel = "صغير";
+    if (size === "medium") sizeLabel = "متوسط";
+    if (size === "large") sizeLabel = "كبير";
+    return React.createElement("option", { key: size, value: size }, sizeLabel);
+})),
                 React.createElement("svg", {
                     className: "pizza-options__size-icon",
                     viewBox: "0 0 20 20",
@@ -298,19 +295,36 @@ const OrderDetails = () => {
         navigate("/confirmation");
     };
 
+    const sizeLabels = {
+        small: "صغير",
+        medium: "وسط",
+        large: "كبير"
+    };
+
+    const toppingLabels = {
+        pepperoni: "بيبروني",
+        sausage: "سجق",
+        chicken: "فراخ",
+        onions: "بصل",
+        peppers: "فلفل",
+        mushrooms: "مشروم",
+        pineapple: "أناناس",
+        olives: "زيتون",
+        jalapenos: "هالبينو"
+    };
+
     return (
         React.createElement("section", { className: "order-details panel", "aria-label": "تفاصيل الطلب" },
             React.createElement("h2", null, "تفاصيل الطلب"),
             React.createElement("div", { className: "order-details__size" },
                 React.createElement("h3", null, "الحجم"),
-                React.createElement("p", { className: "order-details__size-value" }, `${selectedSize} (${sizeOptions[selectedSize].inches} بوصة)`)
-            ),
+               React.createElement("p", { className: "order-details__size-value" }, sizeLabels[selectedSize] || selectedSize),
             React.createElement("div", { className: "order-details__toppings" },
                 React.createElement("h3", null, "الإضافات"),
                 React.createElement("ul", { className: "order-details__toppings-list" },
                     React.createElement("li", { className: "order-details__toppings-item" }, "جبنة"),
                     selectedToppings.map((topping) => (
-                        React.createElement("li", { key: topping, className: "order-details__toppings-item" }, topping)
+                        React.createElement("li", { key: topping, className: "order-details__toppings-item" }, toppingLabels[topping] || topping)
                     ))
                 )
             ),
