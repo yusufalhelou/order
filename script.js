@@ -57,7 +57,7 @@ const toppingOptions = {
 const discountCodes = {
     yusuf: 100,
     yomna: 99.9,
-    Hana: 99.9,
+    hana: 99.9,
     nada: 99.9,
     fiftyone: 51,
     51: 51,
