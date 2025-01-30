@@ -56,6 +56,7 @@ const toppingOptions = {
 
 const discountCodes = {
     yusuf: 100,
+    mariam: 100,
     mario: 100,
     israa: 99.99,
     yomna: 99.99,
