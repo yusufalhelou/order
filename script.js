@@ -61,7 +61,7 @@ const discountCodes = {
     yomna: 99.9,
     hana: 99.9,
     nada: 99.9,
-    mayar: 00.0,
+    mayar: 00.01,
     fiftyone: 51,
     51: 51,
 };
