@@ -1,5 +1,8 @@
 /* Base */
 :root {
+  --cream: #fff3ea;
+  --burgundy: #6b313f;
+  --navy: #213d53;
   --red: #ce442c;
   --dark-red: #270c0c;
   --pale-red: #ce7676;
@@ -27,7 +30,7 @@ body {
   font-weight: 400;
   min-height: 100vh;
   color: var(--black);
-  background-image: linear-gradient(var(--red), #b33a25);
+  background-image: linear-gradient(var(--cream), var(--burgundy));
 }
 
 header {
