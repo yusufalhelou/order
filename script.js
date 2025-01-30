@@ -57,12 +57,13 @@ const toppingOptions = {
 const discountCodes = {
     yusuf: 100,
     yomna: 99.9,
+    Hana: 99.9,
     nada: 99.9,
     fiftyone: 51,
     51: 51,
 };
 
-const toppingPrice = 150;
+const toppingPrice = 0;
 
 const PizzaContext = createContext({});
 
@@ -294,7 +295,7 @@ const OrderDetails = () => {
 
     const sizeLabels = {
         small: "صغير",
-        medium: "متوسط",
+        medium: "وسط",
         large: "كبير"
     };
 
