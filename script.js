@@ -64,6 +64,9 @@ const discountCodes = {
     mayar: 0.01,
     fiftyone: 51,
     51: 51,
+    graduation: 51,
+    gradteam: 51,
+
 };
 
 const toppingPrice = 0;
