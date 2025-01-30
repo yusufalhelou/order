@@ -4,55 +4,55 @@ import { BrowserRouter, Routes, Route, useNavigate } from "https://esm.sh/v135/r
 
 /* Global Variables */
 const sizeOptions = {
-    small: {
+    صغير: { // Small
         basePrice: 800,
         inches: 9.5
     },
-    medium: {
+    وسط: { // Medium
         basePrice: 1000,
         inches: 11.5
     },
-    large: {
+    كبير: { // Large
         basePrice: 1200,
         inches: 13.5
     }
 };
 
 const toppingOptions = {
-    pepperoni: {
-        icons: [], // Removed gluten-free
+    بيبروني: { // Pepperoni
+        icons: [],
         amount: 12
     },
-    sausage: {
+    سجق: { // Sausage
         icons: [],
         amount: 13
     },
-    chicken: {
-        icons: [], // Removed gluten-free
+    فراخ: { // Chicken
+        icons: [],
         amount: 14
     },
-    onions: {
-        icons: ["vegetarian"], // Removed gluten-free
+    بصل: { // Onions
+        icons: ["vegetarian"],
         amount: 15
     },
-    peppers: {
-        icons: ["vegetarian"], // Removed gluten-free
+    فلفل: { // Peppers
+        icons: ["vegetarian"],
         amount: 15
     },
-    mushrooms: {
-        icons: ["vegetarian"], // Removed gluten-free
+    مشروم: { // Mushrooms
+        icons: ["vegetarian"],
         amount: 22
     },
-    pineapple: {
-        icons: ["vegetarian"], // Removed gluten-free
+    أناناس: { // Pineapple
+        icons: ["vegetarian"],
         amount: 16
     },
-    olives: {
-        icons: ["vegetarian"], // Removed gluten-free
+    زيتون: { // Olives
+        icons: ["vegetarian"],
         amount: 19
     },
-    jalapenos: {
-        icons: ["vegetarian", "hot"], // Removed gluten-free
+    هالبينو: { // Jalapenos
+        icons: ["vegetarian", "hot"],
         amount: 19
     }
 };
