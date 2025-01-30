@@ -107,7 +107,7 @@ const Header = () => {
         React.createElement("header", null,
             React.createElement("h1", null,
                 React.createElement("span", { "aria-hidden": true }, "\uD83C\uDF55"),
-                "بناء البيتزا",
+                "بيتزا 51",
                 React.createElement("span", { "aria-hidden": true }, "\uD83C\uDF55")
             )
         )
@@ -213,7 +213,7 @@ const PizzaOptions = () => {
             React.createElement("p", { className: "pizza-options__details" },
                 "الإضافات بسعر ",
                 (toppingPrice / 100).toFixed(2),
-                " دولار لكل واحدة."
+                " جنية لكل واحدة."
             ),
             React.createElement("ul", { className: "pizza-options__toppings" }, Object.entries(toppingOptions).map((topping) => (
                 React.createElement(ToppingOption, { key: topping[0], topping: topping[0], toppingIcons: topping[1].icons })
