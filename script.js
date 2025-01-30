@@ -58,7 +58,7 @@ const discountCodes = {
     yusuf: 100,
     yomna: 99.9,
     nada: 99.9,
-    fiftyone 51,
+    fiftyone: 51,
     51: 51,
 };
 
