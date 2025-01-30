@@ -195,17 +195,17 @@ const PizzaOptions = () => {
             React.createElement("h3", null, "الحجم"),
             React.createElement("div", { className: "pizza-options__size" },
                 React.createElement("select", {
-    className: "pizza-options__size-input",
-    "aria-label": "حجم البيتزا",
-    value: selectedSize,
-    onChange: (e) => setSelectedSize(e.target.value)
-}, Object.keys(sizeOptions).map((size) => {
-    let sizeLabel = size;
-    if (size === "small") sizeLabel = "صغير";
-    if (size === "medium") sizeLabel = "متوسط";
-    if (size === "large") sizeLabel = "كبير";
-    return React.createElement("option", { key: size, value: size }, sizeLabel);
-})),
+                    className: "pizza-options__size-input",
+                    "aria-label": "حجم البيتزا",
+                    value: selectedSize,
+                    onChange: (e) => setSelectedSize(e.target.value)
+                }, Object.keys(sizeOptions).map((size) => {
+                    let sizeLabel = size;
+                    if (size === "small") sizeLabel = "صغير";
+                    if (size === "medium") sizeLabel = "متوسط";
+                    if (size === "large") sizeLabel = "كبير";
+                    return React.createElement("option", { key: size, value: size }, sizeLabel);
+                })),
                 React.createElement("svg", {
                     className: "pizza-options__size-icon",
                     viewBox: "0 0 20 20",
@@ -297,7 +297,7 @@ const OrderDetails = () => {
 
     const sizeLabels = {
         small: "صغير",
-        medium: "وسط",
+        medium: "متوسط",
         large: "كبير"
     };
 
@@ -318,7 +318,8 @@ const OrderDetails = () => {
             React.createElement("h2", null, "تفاصيل الطلب"),
             React.createElement("div", { className: "order-details__size" },
                 React.createElement("h3", null, "الحجم"),
-               React.createElement("p", { className: "order-details__size-value" }, sizeLabels[selectedSize] || selectedSize),
+                React.createElement("p", { className: "order-details__size-value" }, sizeLabels[selectedSize] || selectedSize)
+            ),
             React.createElement("div", { className: "order-details__toppings" },
                 React.createElement("h3", null, "الإضافات"),
                 React.createElement("ul", { className: "order-details__toppings-list" },
