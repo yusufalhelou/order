@@ -5,13 +5,13 @@ import { BrowserRouter, Routes, Route, useNavigate } from "https://esm.sh/v135/r
 /* Global Variables */
 const sizeOptions = {
     small: {
-        basePrice: 800
+        basePrice: 26500
     },
     medium: {
-        basePrice: 1000
+        basePrice: 47500
     },
     large: {
-        basePrice: 1200
+        basePrice: 50000
     }
 };
 
@@ -55,14 +55,11 @@ const toppingOptions = {
 };
 
 const discountCodes = {
-    codepen: 25,
-    css: 20,
-    george: 30,
-    html: 10,
-    javascript: 15,
-    pizza: 40,
-    react: 35,
-    typescript: 5
+    yusuf: 100,
+    yomna: 99.9,
+    nada: 99.9,
+    fiftyone 51,
+    51: 51,
 };
 
 const toppingPrice = 150;
@@ -202,7 +199,7 @@ const PizzaOptions = () => {
                 }, Object.keys(sizeOptions).map((size) => {
                     let sizeLabel = size;
                     if (size === "small") sizeLabel = "صغير";
-                    if (size === "medium") sizeLabel = "متوسط";
+                    if (size === "medium") sizeLabel = "وسط";
                     if (size === "large") sizeLabel = "كبير";
                     return React.createElement("option", { key: size, value: size }, sizeLabel);
                 })),
@@ -383,21 +380,21 @@ const OrderDetails = () => {
                     )
                 )
             )),
-            React.createElement("div", { className: "order-details__price" },
+          React.createElement("div", { className: "order-details__price" },
                 React.createElement("h3", null, "السعر الإجمالي"),
                 React.createElement("p", { className: "order-details__price-value" }, discountApplied && discountValid ? (
                     React.createElement(React.Fragment, null,
                         React.createElement("ins", null,
-                            "$",
+                            "£", // Changed from $ to £
                             (totalPrice -
                                 totalPrice * (discountCodes[discountCode] / 100)).toFixed(2)
                         ),
                         React.createElement("del", null,
-                            "$",
+                            "£", // Changed from $ to £
                             totalPrice.toFixed(2)
                         )
                     )
-                ) : (`$${totalPrice.toFixed(2)}`)),
+                ) : (`£${totalPrice.toFixed(2)}`)), // Changed from $ to £
                 !orderConfirmed && (
                     React.createElement("button", {
                         className: "btn order-details__order",
@@ -425,7 +422,7 @@ const OrderConfirmation = () => {
                 })
             ),
             React.createElement("h2", null, "تم تأكيد الطلب"),
-            React.createElement("p", null, "سيتم تجهيز البيتزا قريبًا!")
+            React.createElement("p", null, "سيتم تجهيز طلبك قريبًا!")
         )
     );
 };
