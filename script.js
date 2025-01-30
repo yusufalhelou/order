@@ -20,7 +20,7 @@ const sizeOptions = {
 
 const toppingOptions = {
     pepperoni: {
-        icons: [], // Removed gluten-free
+        icons: [],
         amount: 12
     },
     sausage: {
@@ -28,31 +28,31 @@ const toppingOptions = {
         amount: 13
     },
     chicken: {
-        icons: [], // Removed gluten-free
+        icons: [],
         amount: 14
     },
     onions: {
-        icons: ["vegetarian"], // Removed gluten-free
+        icons: ["vegetarian"],
         amount: 15
     },
     peppers: {
-        icons: ["vegetarian"], // Removed gluten-free
+        icons: ["vegetarian"],
         amount: 15
     },
     mushrooms: {
-        icons: ["vegetarian"], // Removed gluten-free
+        icons: ["vegetarian"],
         amount: 22
     },
     pineapple: {
-        icons: ["vegetarian"], // Removed gluten-free
+        icons: ["vegetarian"],
         amount: 16
     },
     olives: {
-        icons: ["vegetarian"], // Removed gluten-free
+        icons: ["vegetarian"],
         amount: 19
     },
     jalapenos: {
-        icons: ["vegetarian", "hot"], // Removed gluten-free
+        icons: ["vegetarian", "hot"],
         amount: 19
     }
 };
@@ -107,7 +107,7 @@ const Header = () => {
         React.createElement("header", null,
             React.createElement("h1", null,
                 React.createElement("span", { "aria-hidden": true }, "\uD83C\uDF55"),
-                "بيتزا 51",
+                "بناء البيتزا",
                 React.createElement("span", { "aria-hidden": true }, "\uD83C\uDF55")
             )
         )
@@ -115,11 +115,20 @@ const Header = () => {
 };
 
 function ToppingIcon({ iconType }) {
+    let iconText = "";
+    if (iconType === "vegetarian") {
+        iconText = "ن"; // نباتي
+    } else if (iconType === "hot") {
+        iconText = "ح"; // حار
+    } else {
+        iconText = iconType.charAt(0).toUpperCase();
+    }
+
     return (
         React.createElement("span", {
             className: `pizza-options__topping-icon pizza-options__topping-icon--${iconType.split(" ")[0]}`,
             "aria-hidden": "true"
-        }, iconType.charAt(0).toUpperCase())
+        }, iconText)
     );
 }
 
@@ -137,6 +146,18 @@ const ToppingOption = ({ topping, toppingIcons }) => {
                 selectedTopping
             ]);
         }
+    };
+
+    const toppingLabels = {
+        pepperoni: "بيبروني",
+        sausage: "سجق",
+        chicken: "دجاج",
+        onions: "بصل",
+        peppers: "فلفل",
+        mushrooms: "مشروم",
+        pineapple: "أناناس",
+        olives: "زيتون",
+        jalapenos: "هالبينو"
     };
 
     return (
@@ -157,7 +178,7 @@ const ToppingOption = ({ topping, toppingIcons }) => {
                     React.createElement("div", { className: `${topping} topping-image-item` })
                 ),
                 React.createElement("span", { className: "pizza-options__topping-label-content" },
-                    React.createElement("span", { className: "pizza-options__topping-label-text" }, topping),
+                    React.createElement("span", { className: "pizza-options__topping-label-text" }, toppingLabels[topping] || topping),
                     React.createElement("span", { className: "pizza-options__topping-label-icons" }, toppingIcons.map((icon) => (
                         React.createElement(ToppingIcon, { key: `${topping} ${icon}`, iconType: icon })
                     )))
@@ -181,9 +202,13 @@ const PizzaOptions = () => {
                     "aria-label": "حجم البيتزا",
                     value: selectedSize,
                     onChange: (e) => setSelectedSize(e.target.value)
-                }, Object.keys(sizeOptions).map((size) => (
-                    React.createElement("option", { key: size, value: size }, `${size} (${sizeOptions[size].inches} بوصة)`)
-                ))),
+                }, Object.keys(sizeOptions).map((size) => {
+                    let sizeLabel = size;
+                    if (size === "small") sizeLabel = "صغير";
+                    if (size === "medium") sizeLabel = "متوسط";
+                    if (size === "large") sizeLabel = "كبير";
+                    return React.createElement("option", { key: size, value: size }, `${sizeLabel} (${sizeOptions[size].inches} بوصة)`);
+                })),
                 React.createElement("svg", {
                     className: "pizza-options__size-icon",
                     viewBox: "0 0 20 20",
@@ -213,10 +238,10 @@ const PizzaOptions = () => {
             React.createElement("p", { className: "pizza-options__details" },
                 "الإضافات بسعر ",
                 (toppingPrice / 100).toFixed(2),
-                " جنية لكل واحدة."
+                " جنيه لكل واحدة."
             ),
-            React.createElement("ul", { className: "pizza-options__toppings" }, Object.entries(toppingOptions).map((topping) => (
-                React.createElement(ToppingOption, { key: topping[0], topping: topping[0], toppingIcons: topping[1].icons })
+            React.createElement("ul", { className: "pizza-options__toppings" }, Object.entries(toppingOptions).map(([topping, details]) => (
+                React.createElement(ToppingOption, { key: topping, topping: topping, toppingIcons: details.icons })
             )))
         )
     );
@@ -385,7 +410,7 @@ const OrderConfirmation = () => {
                 })
             ),
             React.createElement("h2", null, "تم تأكيد الطلب"),
-            React.createElement("p", null, "سيتم تجهيز طلبك قريبًا!")
+            React.createElement("p", null, "سيتم تجهيز البيتزا قريبًا!")
         )
     );
 };
@@ -432,6 +457,7 @@ const Confirmation = () => {
         )
     );
 };
+
 
 /* Pizza Builder */
 const PizzaBuilder = () => {
